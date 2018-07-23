@@ -1,0 +1,38 @@
+html, body, h1, h2, h3, h4, h5, h6, span, dt, p, section, figure, div, header, ul, li {
+    margin: 0;
+    padding: 0;
+  }
+  
+  li{
+    list-style: none;
+  }
+  
+  img{
+    display: block;
+  }
+  
+  a{
+    text-decoration: none;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+  
+  button{
+    background: transparent;
+    border: none;
+    outline: none;
+    &:focus{
+      outline: none;
+    }
+  }
+  
+  input{
+    outline: none;
+  }
+  
+  input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: none !important;
+    background-image: none !important;
+    color: inherit !important;
+  }

@@ -1,0 +1,57 @@
+@mixin flexContainer($rowAlign:center,$columnAlign:center,$direction:row,$wrap:nowrap){
+    display: flex;
+    justify-content: $rowAlign;
+    align-items: $columnAlign;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+  }
+  
+@mixin border($thickness,$color,$radius:0,$isImportant:false){
+    @if($isImportant == true){
+        border: #{$thickness}px solid $color !important;
+    } @else{
+        border: #{$thickness}px solid $color;
+    }
+    border-radius: #{$radius}px;
+}
+
+@mixin font($family,$size,$color:$white) {
+    font-family: $family;
+    font-size: $size;
+    color: $color;
+}
+
+@mixin transition($property,$duration,$easing,$delay) {
+    -webkit-transition-property: $property;
+    -webkit-transition-duration: $duration;
+    -webkit-transition-timing-function: $easing;
+    -webkit-transition-delay: $delay;
+
+    -khtml-transition-property: $property;
+    -khtml-transition-duration: $duration;
+    -khtml-transition-timing-function: $easing;
+    -khtml-transition-delay: $delay;
+
+    -moz-transition-property: $property;
+    -moz-transition-duration: $duration;
+    -moz-transition-timing-function: $easing;
+    -moz-transition-delay: $delay;
+
+    -ms-transition-property: $property;
+    -ms-transition-duration: $duration;
+    -ms-transition-timing-function: $easing;
+    -ms-transition-delay: $delay;
+
+    transition-property: $property;
+    transition-duration: $duration;
+    transition-timing-function: $easing;
+    transition-delay: $delay;
+}
+
+@mixin noSelectable(){
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+        -moz-user-select: none; 
+        -ms-user-select: none; 
+            user-select: none; 
+}
