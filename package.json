@@ -1,12 +1,12 @@
 {
-  "name": "webpack_prueba",
+  "name": "webpack_scaffolding",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack -d",
+    "start": "rimraf ./dist && webpack -d",
     "dev": "webpack-dev-server --watch",
-    "build": "webpack -p"
+    "build": "rimraf ./dist && webpack -p"
   },
   "author": "",
   "license": "ISC",
@@ -23,5 +23,8 @@
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.4"
+  },
+  "dependencies": {
+    "rimraf": "^2.6.2"
   }
 }

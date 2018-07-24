@@ -10,17 +10,20 @@ module.exports = {
 
   context: path.resolve(__dirname, "src"),
 
-  entry: "./index.js",
+  entry: {
+    app: "./index.js"
+  },
 
   output: {
-    filename: "bundle.js",
+    filename: "[name]-bundle.js",
     path: path.resolve(__dirname, "dist")
   },
 
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     compress: true,
-    port: 9000
+    port: 9000,
+    hot: true
   },
 
   optimization: {
@@ -43,7 +46,7 @@ module.exports = {
     }),
 
     new MiniCssExtractPlugin({
-      filename: "styles.css"
+      filename: "[name]-styles.css"
     })
   ],
 
