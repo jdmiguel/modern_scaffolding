@@ -1,5 +1,5 @@
 const path = require("path");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
@@ -39,9 +39,9 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'webpack_config',
-      template: '../assets/template-app.ejs',
-      filename: 'index.html',
+      title: "webpack_config",
+      template: "../assets/template-app.ejs",
+      filename: "index.html",
       hash: true
     }),
 
@@ -53,16 +53,15 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: "babel-loader"
+      },
+      {
         test: /\.scss$/,
         exclude: /node_modules/,
-        /*use: [
-            "style-loader", // creates style nodes from JS strings
-            "css-loader", // translates CSS into CommonJS
-            "sass-loader" // compiles Sass to CSS
-        ]*/
         use: [
           MiniCssExtractPlugin.loader,
-          //"style-loader",
           "css-loader",
           "sass-loader"
         ]
