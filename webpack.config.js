@@ -1,9 +1,12 @@
 const path = require("path");
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+
+//console.log(`From webpack.config.js => MODE: ${process.env.MODE}, PLATFORM: ${process.env.PLATFORM}`); 
 
 module.exports = {
   name: "webpack_config",
@@ -47,7 +50,9 @@ module.exports = {
 
     new MiniCssExtractPlugin({
       filename: "[name]-styles.css"
-    })
+    }),
+
+    new webpack.DefinePlugin({ "process.env.TEST": JSON.stringify("test") })
   ],
 
   module: {
