@@ -1,32 +1,35 @@
-const path = require("path");
+const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-//console.log(`From webpack.config.js => MODE: ${process.env.MODE}, PLATFORM: ${process.env.PLATFORM}`); 
+const PLATFORM_ENV = process.env.PLATFORM;
+const MODE_ENV = process.env.MODE;
 
 module.exports = {
-  name: "webpack_config",
+  mode: 'none',
 
-  context: path.resolve(__dirname, "src"),
+  name: 'webpack_config',
+
+  context: path.resolve(__dirname, 'src'),
 
   entry: {
-    app: "./index.js"
+    app: './index.js',
   },
 
   output: {
-    filename: "[name]-bundle.js",
-    path: path.resolve(__dirname, "dist")
+    filename: '[name]-bundle.js',
+    path: path.resolve(__dirname, 'dist'),
   },
 
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 9000,
-    hot: true
+    hot: true,
   },
 
   optimization: {
@@ -34,25 +37,28 @@ module.exports = {
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: true 
+        sourceMap: true,
       }),
-      new OptimizeCSSAssetsPlugin({})
-    ]
+      new OptimizeCSSAssetsPlugin({}),
+    ],
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: "webpack_config",
-      template: "../assets/template-app.ejs",
-      filename: "index.html",
-      hash: true
+      title: 'webpack_config',
+      template: '../assets/template-app.ejs',
+      filename: 'index.html',
+      hash: true,
     }),
 
     new MiniCssExtractPlugin({
-      filename: "[name]-styles.css"
+      filename: '[name]-styles.css',
     }),
 
-    new webpack.DefinePlugin({ "process.env.TEST": JSON.stringify("test") })
+    new webpack.DefinePlugin({
+      PLATFORM: JSON.stringify(PLATFORM_ENV),
+      MODE: JSON.stringify(MODE_ENV),
+    }),
   ],
 
   module: {
@@ -60,18 +66,18 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: "babel-loader"
+        use: 'babel-loader',
       },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
-          "css-loader",
-          "sass-loader"
-        ]
-      }
-    ]
-  }
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+    ],
+  },
 };
 
