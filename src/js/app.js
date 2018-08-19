@@ -1,6 +1,6 @@
-require('./module1.js');
-require('./module3.js');
+const App = () => {
+  const appWrapper = document.querySelector('#app');
+  appWrapper.innerHTML = '<h1>Hola desde app!</h1>';
+};
 
-const app = () => console.log('Hello from App');
-
-app();
+export default App;

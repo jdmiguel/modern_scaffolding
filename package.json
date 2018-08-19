@@ -1,15 +1,18 @@
 {
-  "name": "webpack_scaffolding",
+  "name": "webpack4_scaffolding",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "rimraf ./dist && cross-env MODE='development' PLATFORM='chrome' webpack -d",
-    "dev": "cross-env MODE='development' PLATFORM='chrome' webpack-dev-server --hot",
-    "build": "rimraf ./dist && cross-env MODE='development' PLATFORM='chrome' webpack -p"
+    "dev": "cross-env MODE='development' webpack-dev-server --hot",
+    "build": "rimraf ./dist && cross-env MODE='production' webpack --config webpack.prod.config.js"
   },
-  "author": "",
+  "author": "jdmiguel",
   "license": "ISC",
+  "dependencies":{
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "optimize-css-assets-webpack-plugin": "^5.0.0"
+  },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
@@ -28,12 +31,10 @@
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.1",
     "node-sass": "^4.9.2",
-    "optimize-css-assets-webpack-plugin": "^5.0.0",
     "prettier": "^1.14.0",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
-    "uglifyjs-webpack-plugin": "^1.2.7",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.4"
