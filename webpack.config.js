@@ -45,7 +45,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'webpack_config',
+      title: 'modern_scaffolding',
       template: '../assets/template-app.ejs',
       filename: 'index.html',
       hash: true
